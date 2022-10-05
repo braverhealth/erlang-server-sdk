@@ -59,7 +59,9 @@ gun_parse_http_options(HttpOptions, GunOptions) ->
 gun_parse_tls_options(#{tls_options := undefined}, GunOptions) -> GunOptions;
 gun_parse_tls_options(#{tls_options := TlsOptions}, GunOptions) ->
     GunOptions#{
-        transport_opts => TlsOptions
+        transport_opts => TlsOptions,
+        %% support for gun 2.0.0+
+        tls_opts => TlsOptions
     }.
 
 -spec gun_append_custom_headers(Headers :: map(), ConfigOptions :: ldclient_config:http_options()) -> map().
